@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.newsblog.client.controller.SignUpController">
+    <left>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="305.0" style="-fx-padding: 0; -fx-border-color: transparent;" BorderPane.alignment="CENTER">
+            <children>
+                <AnchorPane layoutX="-10.0" layoutY="-4.0" prefHeight="406.0" prefWidth="315.0" style="-fx-background-color: #3f4d67;" />
+            </children>
+        </AnchorPane>
+    </left>
+   <right>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="399.0" prefWidth="297" BorderPane.alignment="CENTER">
+          <children>
+              <Label alignment="BASELINE_CENTER" layoutX="74.0" layoutY="33.0" prefHeight="27.0" prefWidth="149.0" text="Đăng ký người dùng mới" textAlignment="CENTER" textFill="#3f4d66">
+                  <font>
+                      <Font size="12.0" />
+                  </font>
+              </Label>
+              <TextField fx:id="signUpUsername" layoutX="73.0" layoutY="89.0" prefHeight="25.3" prefWidth="149" promptText="Username" style="-fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-color: #3f4d67;">
+                  <font>
+                      <Font size="12.0" />
+                  </font>
+              </TextField>
+
+
+              <TextField fx:id="signUpEmail" layoutX="74.0" layoutY="138.0" prefHeight="25.3" prefWidth="149" promptText="email" style="-fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-color: #3f4d67;">
+                  <font>
+                      <Font size="12.0" />
+                  </font>
+              </TextField>
+              <PasswordField fx:id="signUpPassword" layoutX="74.0" layoutY="186.0" prefHeight="25.3" prefWidth="149" promptText="Password" style="-fx-border-radius: 20px; -fx-background-radius: 20px; -fx-border-color: #3f4d67;">
+                  <font>
+                      <Font size="12.0" />
+                  </font>
+              </PasswordField>
+              <Button fx:id="signUpButton" layoutX="22.0" layoutY="293.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="26.0" prefWidth="254.0" style="-fx-background-color: #3f4d67; -fx-background-radius: 20px;" text="Submit" textFill="WHITE">
+                  <font>
+                      <Font size="12.0" />
+                  </font>
+              </Button>
+              <RadioButton fx:id="isAdmin" layoutX="50.0" layoutY="239.0" mnemonicParsing="false" text="Assmin" textFill="#3f4d67">
+                  <font>
+                      <Font size="16.0" />
+                  </font>
+              </RadioButton>
+              <RadioButton fx:id="isUser" layoutX="168.0" layoutY="239.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" text="danden" textFill="#3f4d67">
+                  <font>
+                      <Font size="16.0" />
+                  </font>
+              </RadioButton>
+              <Button fx:id="backButton" layoutX="22.0" layoutY="339.0" mnemonicParsing="false" onAction="#backToLogin" prefHeight="26.0" prefWidth="254.0" style="-fx-background-color: #3f4d67; -fx-background-radius: 20px;" text="Back to Login" textFill="WHITE">
+                  <font>
+                      <Font size="12.0" />
+                  </font>
+              </Button>
+          </children>
+      </AnchorPane>
+   </right>
+</BorderPane>
