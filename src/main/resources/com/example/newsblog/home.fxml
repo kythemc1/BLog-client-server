@@ -34,7 +34,7 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
+                        <HBox alignment="CENTER" onMousePressed="#onMousePressChangePassword" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
                             <children>
                                 <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -49,18 +49,16 @@
                             </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
-                            <children>
-                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@img/ic_logout.png" />
-                                    </image>
-                                </ImageView>
-                                <Label prefHeight="21.0" prefWidth="101.0" text="Sign Out" textFill="#a1a1a1">
-                                    <font>
-                                        <Font name="System Bold" size="18.0" />
-                                    </font>
-                                </Label>
-                            </children>
+                                  <children>
+                                      <ImageView fitHeight="30.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                              <Image url="@img/ic_logout.png" />
+                                          </image>
+                                      </ImageView>
+                        <Button mnemonicParsing="false" onAction="#logout" prefHeight="35.0" prefWidth="104.0" style="-fx-background-color: #121212;-fx-font-size: 18;-fx-font-family:'Inter Semi Bold' " text="Sign Out" textFill="#a1a1a1">
+
+                        </Button>
+                                  </children>
                         </HBox>
                     </children>
                 </VBox>
@@ -91,7 +89,7 @@
         </VBox>
     </left>
     <center>
-        <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
+        <VBox prefHeight="835.0" prefWidth="1080.0" spacing="20.0" BorderPane.alignment="CENTER">
             <children>
                 <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="1080.0" spacing="20.0">
                     <children>
@@ -113,59 +111,64 @@
                         </HBox>
                     </children>
                 </HBox>
-                <VBox alignment="CENTER" prefHeight="37.0" prefWidth="1080.0">
-                    <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="1080.0" spacing="20.0">
+                <HBox alignment="CENTER">
+                    <VBox alignment="CENTER" prefHeight="37.0" prefWidth="1080.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="1080.0" spacing="20.0">
 
-                                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="103.0">
-                                    <children>
-                                      <Pane prefHeight="50.0" prefWidth="26.0" HBox.hgrow="ALWAYS" />
-                                        <ImageView fitHeight="50.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@img/user.png" />
-                                            </image>
-                                        </ImageView>
-                                    </children>
-                                </HBox>
-                                  <Label prefHeight="27.0" prefWidth="97.0" text="Ban nghi gi" textFill="WHITE">
-                                      <font>
-                                          <Font size="18.0" />
-                                      </font>
-                                  </Label>
-                                <HBox alignment="CENTER" prefHeight="50.0" prefWidth="800.0" spacing="10.0">
-                     <children>
-                                      <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="45.0" prefWidth="745.0" styleClass="search-container" stylesheets="@Style.css">
-                                          <children>
-                                              <TextField prefHeight="44.0" prefWidth="697.0" promptText="Them bai viet" style="-fx-background-color: transparent;" />
-                                          </children>
-                                      </HBox>
-                     </children>
-                                </HBox>
-                    </HBox>
-                </VBox>
-                <ScrollPane prefHeight="1000" prefWidth="1080.0" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+                            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="103.0">
+                                <children>
+                                    <Pane prefHeight="50.0" prefWidth="26.0" HBox.hgrow="ALWAYS" />
+                                    <ImageView fitHeight="50.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@img/user.png" />
+                                        </image>
+                                    </ImageView>
+                                </children>
+                            </HBox>
+                            <Label prefHeight="27.0" prefWidth="97.0" text="Ban nghi gi" textFill="WHITE">
+                                <font>
+                                    <Font size="18.0" />
+                                </font>
+                            </Label>
+                            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="800.0" spacing="10.0">
+                                <children>
+                                    <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="45.0" prefWidth="745.0" styleClass="search-container" stylesheets="@Style.css">
+                                        <children>
+                                            <TextField prefHeight="44.0" prefWidth="697.0" promptText="Them bai viet" style="-fx-background-color: transparent;" />
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </HBox>
+                            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                        </HBox>
+                    </VBox>
+
+                </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" />
+                <ScrollPane prefHeight="747.0" prefWidth="635.0" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
                     <content>
-                        <VBox fx:id="postContainer" prefHeight="730.0" prefWidth="1080.0" spacing="10.0">
+                        <VBox fx:id="postContainer" prefHeight="662.0" prefWidth="1080.0" spacing="10.0">
                             <children>
-<!--                                <Label text="Recently Played" textFill="WHITE">-->
-<!--                                    <font>-->
-<!--                                        <Font name="System Bold" size="20.0" />-->
-<!--                                    </font>-->
-<!--                                </Label>-->
-<!--                                <ScrollPane fitToWidth="true" minViewportHeight="270.0" prefHeight="229.0" prefViewportWidth="10.0" prefWidth="1059.0" style="-fx-background-color: transparent;">-->
-<!--                                    <content>-->
-<!--                                        <HBox fx:id="recentlyPlayedContainer" spacing="30.0" />-->
-<!--                                    </content>-->
-<!--                                </ScrollPane>-->
-<!--                                <Label text="Favorite" textFill="WHITE">-->
-<!--                                    <font>-->
-<!--                                        <Font name="System Bold" size="20.0" />-->
-<!--                                    </font>-->
-<!--                                </Label>-->
-<!--                                <ScrollPane fitToWidth="true" minViewportHeight="270.0" prefHeight="229.0" prefWidth="1059.0" style="-fx-background-color: transparent;">-->
-<!--                                    <content>-->
-<!--                                        <HBox fx:id="favoriteContainer" prefHeight="0.0" prefWidth="0.0" spacing="30.0" />-->
-<!--                                    </content>-->
-<!--                                </ScrollPane>-->
+                                <!--                                <Label text="Recently Played" textFill="WHITE">-->
+                                <!--                                    <font>-->
+                                <!--                                        <Font name="System Bold" size="20.0" />-->
+                                <!--                                    </font>-->
+                                <!--                                </Label>-->
+                                <!--                                <ScrollPane fitToWidth="true" minViewportHeight="270.0" prefHeight="229.0" prefViewportWidth="10.0" prefWidth="1059.0" style="-fx-background-color: transparent;">-->
+                                <!--                                    <content>-->
+                                <!--                                        <HBox fx:id="recentlyPlayedContainer" spacing="30.0" />-->
+                                <!--                                    </content>-->
+                                <!--                                </ScrollPane>-->
+                                <!--                                <Label text="Favorite" textFill="WHITE">-->
+                                <!--                                    <font>-->
+                                <!--                                        <Font name="System Bold" size="20.0" />-->
+                                <!--                                    </font>-->
+                                <!--                                </Label>-->
+                                <!--                                <ScrollPane fitToWidth="true" minViewportHeight="270.0" prefHeight="229.0" prefWidth="1059.0" style="-fx-background-color: transparent;">-->
+                                <!--                                    <content>-->
+                                <!--                                        <HBox fx:id="favoriteContainer" prefHeight="0.0" prefWidth="0.0" spacing="30.0" />-->
+                                <!--                                    </content>-->
+                                <!--                                </ScrollPane>-->
                             </children>
                             <padding>
                                 <Insets left="20.0" right="20.0" />

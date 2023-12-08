@@ -1,11 +1,14 @@
 package com.example.newsblog.server;
 
+import com.example.newsblog.client.model.Post;
 import com.example.newsblog.server.service.HomeService;
 import com.example.newsblog.server.service.SignIn;
-
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.List;
 
 public class WorkerThread extends Thread {
     private Socket socket;
@@ -51,8 +54,11 @@ public class WorkerThread extends Thread {
                         case "2":
                             System.out.println("all post");
                             HomeService homeService =new HomeService();
-                            String str = homeService.getAllPost().toString();
-                            dout.writeUTF(str);
+                            List<Post> posts = homeService.getAllPost();
+                            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                            String jsonLog = gson.toJson(posts);
+                            System.out.println(jsonLog);
+                            dout.writeUTF(jsonLog);
                             dout.flush();
                             break;
                         default:

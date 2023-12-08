@@ -1,7 +1,9 @@
 package com.example.newsblog.client.controller;
 
 import com.example.newsblog.client.model.Post;
-import com.example.newsblog.client.payload.GetAllPost;
+import com.example.newsblog.client.payload.GetAllPostRequest;
+import com.example.newsblog.client.utils.ViewUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,6 +21,26 @@ public class HomePageController implements Initializable {
     private VBox postContainer;
     List<Post> posts ;
 
+    @FXML
+    void backToLogin(ActionEvent event) throws IOException {
+        ViewUtils a = new ViewUtils();
+        a.changeScene(event, "/com/example/newsblog/sign-in.fxml");
+    }
+
+    @FXML
+    void logout(ActionEvent event)throws IOException {
+        ViewUtils a = new ViewUtils();
+        a.changeScene(event, "/com/example/newsblog/sign-in.fxml");
+    }
+
+    @FXML
+    void onMousePressChangePassword() throws IOException{
+        FXMLLoader fxmlLoader =new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/com/example/newsblog/add-new-post.fxml"));
+        VBox vBox =fxmlLoader.load();
+        postContainer.getChildren().setAll(vBox);
+//        postContainer.getChildren().add();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -27,11 +49,10 @@ public class HomePageController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(posts);
 
         try {
             for (Post post : posts){
-                System.out.println(post);
+//                System.out.println(post);
                 FXMLLoader fxmlLoader =new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com/example/newsblog/post-blogs.fxml"));
                 VBox vBox =fxmlLoader.load();
@@ -48,8 +69,9 @@ public class HomePageController implements Initializable {
 
     public List<Post> getPost() throws IOException {
         System.out.println("vao homepage ............ get post");
-        List<Post> list =new ArrayList<>();
-        list=new  GetAllPost().requestServer();
+       GetAllPostRequest getAllPostRequest =new GetAllPostRequest();
+       List<Post> list =new ArrayList<>();
+       list=getAllPostRequest.requestServer();
         return list;
     }
 }

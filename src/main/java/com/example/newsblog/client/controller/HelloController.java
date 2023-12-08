@@ -17,7 +17,7 @@ public class HelloController {
     protected void onHelloButtonClick(ActionEvent event) throws IOException {
 
         ViewUtils viewUtils = new ViewUtils();
-        viewUtils.changeScene(event, "/com/example/newsblog/home.fxml");
+        viewUtils.changeScene(event, "/com/example/newsblog/sign-in.fxml");
 
         welcomeText.setText("Welcome to JavaFX Application!");
     }

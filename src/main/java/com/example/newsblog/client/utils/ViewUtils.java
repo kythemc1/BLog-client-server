@@ -10,7 +10,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ViewUtils {
@@ -31,4 +33,5 @@ public class ViewUtils {
         Node node = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(viewSource)));
         currentPane.getChildren().setAll(node);
     }
+
 }
