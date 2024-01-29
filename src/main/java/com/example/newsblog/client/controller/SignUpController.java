@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.example.newsblog.server.service.SignUp;
+import com.example.newsblog.client.model.User;
+import com.example.newsblog.client.payload.SignUpRequest;
 import com.example.newsblog.client.utils.ViewUtils;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,11 +21,11 @@ public class SignUpController implements Initializable{
 //    @FXML
 //    private Button backButton;
 
-    @FXML
-    private RadioButton isAdmin;
-
-    @FXML
-    private RadioButton isUser;
+//    @FXML
+//    private RadioButton isAdmin;
+//
+//    @FXML
+//    private RadioButton isUser;
 
 //    @FXML
 //    private Button signUpButton;
@@ -46,7 +49,7 @@ public class SignUpController implements Initializable{
     }
 
     @FXML
-    void handleSignUp(ActionEvent event) {
+    void handleSignUp(ActionEvent event) throws IOException {
         String inputUsername = signUpUsername.getText();
         String inputPassword = signUpPassword.getText();
         String inputEmail = signUpEmail.getText();
@@ -60,34 +63,43 @@ public class SignUpController implements Initializable{
             );
 
         }   else {
-            if (!isUser.isSelected() && !isAdmin.isSelected()) {
-                createDialog(
-                        Alert.AlertType.WARNING,
-                        "Khoan nào cán bộ",
-                        "", "Vui lòng chọn role cho username!"
-                );
-            }   else {
-                if (isUser.isSelected()) role = 0;
-                if (isAdmin.isSelected()) role = 1;
-                SignUp signUp =new SignUp();
-                if(signUp.SignUp(inputUsername,inputPassword,inputEmail,role)){
-                        signUpPassword.clear();
-                        signUpUsername.clear();
-                        signUpEmail.clear();
-                        isAdmin.setSelected(false);
-                        isUser.setSelected(false);
-                }else {
+//            if (!isUser.isSelected() && !isAdmin.isSelected()) {
+//                createDialog(
+//                        Alert.AlertType.WARNING,
+//                        "Khoan nào cán bộ",
+//                        "", "Vui lòng chọn role cho username!"
+//                );
+//            }   else {
+//                if (isUser.isSelected()) role = 0;
+//                if (isAdmin.isSelected()) role = 1;
+                User user =new User();
+                user.setRole(0);
+                user.setUsername(inputUsername);
+                user.setPassword(inputPassword);
+                user.setEmail(inputEmail);
+                SignUpRequest signUpRequest =new SignUpRequest();
 
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                String jsonLog = gson.toJson(user);
+
+                if(signUpRequest.requestServer(jsonLog)){
+                    signUpUsername.clear();
+                    signUpPassword.clear();
+                    signUpEmail.clear();
+                    createDialog(
+                            Alert.AlertType.WARNING,
+                            "Chuc mung",
+                            "", "Da them thanh cong tai khoan");
                 }
 
-            }
+//            }
         }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        isAdmin.setToggleGroup(toggleRole);
-        isUser.setToggleGroup(toggleRole);
+//        isAdmin.setToggleGroup(toggleRole);
+//        isUser.setToggleGroup(toggleRole);
     }
 
 }

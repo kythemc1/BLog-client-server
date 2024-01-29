@@ -1,8 +1,11 @@
 package com.example.newsblog.client.payload;
 
 
+import com.example.newsblog.HelloApplication;
+
 import java.io.*;
 import java.net.Socket;
+import java.util.prefs.Preferences;
 
 public class SignInRequest {
     private String requestsId;
@@ -44,11 +47,15 @@ public class SignInRequest {
 
         String str = in.readUTF();
         System.out.println(str.toString());
-        if(str.equals("true"))
+        if(str.equals("false"))
         {
-            return true;
+
+            return false;
         }
-        return false;
+        Preferences preferences = Preferences.userNodeForPackage(HelloApplication.class);
+        preferences.put("username",username);
+        preferences.put("userId",str);
+        return true;
     }
 
 

@@ -1,6 +1,7 @@
 package com.example.newsblog.server.service;
 
 import com.example.newsblog.client.model.Post;
+import javafx.geometry.Pos;
 
 import java.sql.*;
 
@@ -91,4 +92,21 @@ public class PostService {
         }
     }
 
+    public Post findPost(String content){
+        String SELECT_QUERY= "SELECT * FROM posts WHERE content LIKE ?";
+        try {
+            // Kết nối đến cơ sở dữ liệu
+            Connection conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+
+            // Chuẩn bị câu lệnh SQL
+            PreparedStatement preparedStatement = conn.prepareStatement(SELECT_QUERY);
+            preparedStatement.setString(1,"%"+ content+"%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            Post postResponse = null;
+            return (Post) resultSet;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

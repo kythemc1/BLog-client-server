@@ -4,6 +4,8 @@ import com.example.newsblog.client.model.Post;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,8 +18,8 @@ public class PostController implements Initializable {
     @FXML
     Label postContent;
 
-//    @FXML
-//    ImageView postImage;
+    @FXML
+    ImageView postImage;
 
 
 
@@ -28,6 +30,18 @@ public class PostController implements Initializable {
     public void setData(Post post) {
 //        postTittle.setText(post.getTitle().toString());
         postContent.setText(post.getContent().toString());
+
+        String url=post.getImageUrl();
+        if(url.length()>10){
+            Image image = new Image(url,true);
+            postImage.setImage(image);
+        }
+        else {
+            url="https://media.wired.com/photos/644b1ee2a6c1fece8f4bb0d1/master/w_1920,c_limit/Ben-Smith-Jonah-Peretti-Plaintext-Business-1357479731.jpg";
+            Image image = new Image(url,true);
+            postImage.setImage(image);
+        }
+
     }
 
 //    public Post getPost(){

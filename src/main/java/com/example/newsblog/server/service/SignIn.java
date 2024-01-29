@@ -13,7 +13,7 @@ import java.util.prefs.Preferences;
 import static com.example.newsblog.server.connectJDBC.DBConstants.*;
 
 public class SignIn {
-    public boolean SignIn(String username, String password){
+    public String SignIn(String username, String password){
         String SELECT_QUERY = "SELECT * FROM user WHERE username = ? AND password = ?";
         try {
                 //Khai bao ket noi sql
@@ -23,17 +23,17 @@ public class SignIn {
                 preparedStatement.setString(2, password);
                 ResultSet result = preparedStatement.executeQuery();
                 if (result.next()) {
-                    Preferences userPreferences = Preferences.userRoot();
-                    userPreferences.put("role", result.getString(4));
-                    userPreferences.put("username", result.getString(2));
-                    System.out.println("thanh congnggggg");
-                    return true;
+//                    Preferences userPreferences = Preferences.userRoot();
+//                    userPreferences.put("role", result.getString(4));
+//                    userPreferences.put("username", result.getString(2));
+                    System.out.println("thanh congnggggg"+ result.getString(1));
+                    return result.getString(1);
                 }   else {
-                    return  false;
+                    return  null;
                 }
             }   catch (SQLException e) {
                 e.printStackTrace();
-                return false;
+                return null;
             }
     }
 }
